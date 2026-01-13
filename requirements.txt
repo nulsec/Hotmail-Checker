@@ -1,0 +1,5 @@
+# Requirements untuk Hotmail Checker
+# Python 3.6+
+
+# Tidak ada dependencies eksternal yang diperlukan
+# Script menggunakan library standar Python saja
