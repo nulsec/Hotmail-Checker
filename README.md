@@ -7,12 +7,12 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue?style=for-the-badge)
 ![Microsoft](https://img.shields.io/badge/Microsoft-API-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
 
-**🔍 Tool powerful untuk memvalidasi email Hotmail/Outlook/Live langsung ke server Microsoft**
+**🔍 Powerful tool to validate Hotmail/Outlook/Live emails directly to Microsoft servers**
 
-[Fitur](#-fitur) •
-[Instalasi](#-instalasi) •
-[Penggunaan](#-penggunaan) •
-[Dokumentasi](#-metode-pengecekan)
+[Features](#-features) •
+[Installation](#-installation) •
+[Usage](#-usage) •
+[Documentation](#-checking-methods)
 
 ---
 
@@ -25,7 +25,7 @@
 git clone https://github.com/nulsec/Hotmail-Checker.git
 cd Hotmail-Checker
 
-# Cek single email
+# Check single email
 python hotmail_checker.py email@hotmail.com
 
 # Bulk checking
@@ -34,16 +34,16 @@ python hotmail_checker.py -f emails.txt
 
 ---
 
-## ✨ Fitur
+## ✨ Features
 
 <table>
 <tr>
 <td>
 
 ### 🎯 Core Features
-- ✅ Validasi format email
-- ✅ **Pengecekan terdaftar di Microsoft** 
-- ✅ Pengecekan SMTP server
+- ✅ Email format validation
+- ✅ **Check if registered with Microsoft** 
+- ✅ SMTP server checking
 - ✅ Single & Bulk checking
 
 </td>
@@ -54,7 +54,7 @@ python hotmail_checker.py -f emails.txt
 - 📬 outlook.com  
 - 📬 live.com
 - 📬 msn.com
-- 📬 outlook.sg, dll
+- 📬 outlook.sg, etc.
 
 </td>
 <td>
@@ -62,7 +62,7 @@ python hotmail_checker.py -f emails.txt
 ### 🛡️ Advanced
 - 🔄 Retry mechanism
 - ⏱️ Configurable timeout
-- 💾 Export ke JSON
+- 💾 Export to JSON
 - 🚦 Rate limiting protection
 
 </td>
@@ -71,11 +71,11 @@ python hotmail_checker.py -f emails.txt
 
 ---
 
-## 📦 Instalasi
+## 📦 Installation
 
-> **Note:** Script ini menggunakan library standar Python saja!
+> **Note:** This script uses only standard Python libraries!
 
-### Persyaratan
+### Requirements
 | Requirement | Version |
 |------------|---------|
 | Python | 3.6+ |
@@ -86,12 +86,12 @@ python hotmail_checker.py -f emails.txt
 git clone https://github.com/nulsec/Hotmail-Checker.git
 cd Hotmail-Checker
 
-# Siap digunakan! 🎉
+# Ready to use! 🎉
 ```
 
 ---
 
-## 🚀 Penggunaan
+## 🚀 Usage
 
 ### 📝 Single Email Check
 
@@ -101,34 +101,34 @@ python hotmail_checker.py email@hotmail.com
 
 ### 📋 Bulk Checking
 
-Buat file `emails.txt`:
+Create `emails.txt` file:
 ```
 user1@hotmail.com
 user2@outlook.com
 user3@live.com
 ```
 
-Jalankan:
+Run:
 ```bash
 python hotmail_checker.py -f emails.txt
 ```
 
-### 🎛️ Opsi Lanjutan
+### 🎛️ Advanced Options
 
 ```bash
-# 🏆 Metode Microsoft (REKOMENDASI)
+# 🏆 Microsoft Method (RECOMMENDED)
 python hotmail_checker.py -f emails.txt -o results.json --method microsoft
 
 # ⏱️ Custom timeout & delay
 python hotmail_checker.py -f emails.txt --timeout 15 --delay 2
 
-# 🚀 Metode cepat (format only)
+# 🚀 Fast method (format only)
 python hotmail_checker.py email@hotmail.com --method format
 
-# 📡 Metode SMTP
+# 📡 SMTP Method
 python hotmail_checker.py email@hotmail.com --method smtp
 
-# 🚫 Tanpa menyimpan hasil
+# 🚫 Without saving results
 python hotmail_checker.py -f emails.txt --no-save
 ```
 
@@ -136,42 +136,42 @@ python hotmail_checker.py -f emails.txt --no-save
 
 ## 📖 Command Line Options
 
-| Option | Deskripsi | Default |
-|--------|-----------|---------|
-| `email` | Email untuk single check | - |
-| `-f, --file` | File list email | - |
+| Option | Description | Default |
+|--------|-------------|---------|
+| `email` | Email for single check | - |
+| `-f, --file` | Email list file | - |
 | `-o, --output` | Output file (JSON) | Auto-generated |
-| `-m, --method` | Metode: `microsoft`, `smtp`, `vrfy`, `format` | `microsoft` |
-| `-t, --timeout` | Timeout (detik) | `10` |
-| `-d, --delay` | Delay antar cek (detik) | `1.0` |
-| `-r, --retry` | Jumlah retry | `2` |
-| `--no-save` | Tidak menyimpan hasil | `False` |
+| `-m, --method` | Method: `microsoft`, `smtp`, `vrfy`, `format` | `microsoft` |
+| `-t, --timeout` | Timeout (seconds) | `10` |
+| `-d, --delay` | Delay between checks (seconds) | `1.0` |
+| `-r, --retry` | Number of retries | `2` |
+| `--no-save` | Don't save results | `False` |
 
 ---
 
-## 🔬 Metode Pengecekan
+## 🔬 Checking Methods
 
-### 1️⃣ Microsoft (Default - ⭐ REKOMENDASI)
+### 1️⃣ Microsoft (Default - ⭐ RECOMMENDED)
 
-> Menggunakan API `login.microsoftonline.com` - **Paling Akurat!**
+> Using `login.microsoftonline.com` API - **Most Accurate!**
 
 ```bash
 python hotmail_checker.py email@hotmail.com --method microsoft
 ```
 
-| Kelebihan | Kekurangan |
+| Advantages | Disadvantages |
 |-----------|------------|
-| ✅ Sangat akurat | ⚠️ Perlu delay 2 detik |
-| ✅ Semua domain Microsoft | ⚠️ Rate limiting |
-| ✅ Deteksi email terdaftar | |
+| ✅ Very accurate | ⚠️ Requires 2 second delay |
+| ✅ All Microsoft domains | ⚠️ Rate limiting |
+| ✅ Detects registered emails | |
 
-### 2️⃣ Format (Tercepat ⚡)
+### 2️⃣ Format (Fastest ⚡)
 
 ```bash
 python hotmail_checker.py email@hotmail.com --method format
 ```
 
-> Hanya validasi format & domain. **Tidak perlu internet!**
+> Only format & domain validation. **No internet needed!**
 
 ### 3️⃣ SMTP
 
@@ -179,7 +179,7 @@ python hotmail_checker.py email@hotmail.com --method format
 python hotmail_checker.py email@hotmail.com --method smtp
 ```
 
-> Pengecekan via SMTP server. Akurat tapi mungkin timeout.
+> Checking via SMTP server. Accurate but may timeout.
 
 ### 4️⃣ VRFY
 
@@ -187,11 +187,11 @@ python hotmail_checker.py email@hotmail.com --method smtp
 python hotmail_checker.py email@hotmail.com --method vrfy
 ```
 
-> Menggunakan VRFY command (biasanya dinonaktifkan).
+> Uses VRFY command (usually disabled).
 
 ---
 
-## 📊 Format Output
+## 📊 Output Format
 
 ```json
 [
@@ -199,7 +199,7 @@ python hotmail_checker.py email@hotmail.com --method vrfy
     "email": "user@hotmail.com",
     "timestamp": "2024-01-01T12:00:00",
     "valid": true,
-    "message": "Email terdaftar di Microsoft",
+    "message": "Email registered with Microsoft",
     "domain": "hotmail.com",
     "method": "microsoft"
   }
@@ -208,55 +208,55 @@ python hotmail_checker.py email@hotmail.com --method vrfy
 
 ---
 
-## 🖥️ Contoh Output
+## 🖥️ Output Examples
 
 ### Single Check
 ```
-Mengecek email: test@hotmail.com
+Checking email: test@hotmail.com
 
 📧 Email  : test@hotmail.com
 🌐 Domain : hotmail.com
 ✅ Status : VALID
-💬 Pesan  : Email valid dan aktif
+💬 Message: Email is valid and active
 ```
 
 ### Bulk Check
 ```
-🚀 Memulai pengecekan 3 email...
+🚀 Starting to check 3 emails...
 
-[1/3] Mengecek: user1@hotmail.com... ✅ VALID
-[2/3] Mengecek: user2@outlook.com... ❌ INVALID  
-[3/3] Mengecek: user3@live.com... ✅ VALID
+[1/3] Checking: user1@hotmail.com... ✅ VALID
+[2/3] Checking: user2@outlook.com... ❌ INVALID  
+[3/3] Checking: user3@live.com... ✅ VALID
 
 ══════════════════════════════════════════════════
-📊 RINGKASAN HASIL
+📊 RESULTS SUMMARY
 ══════════════════════════════════════════════════
-📬 Total email  : 3
-✅ Valid        : 2 (66.7%)
-❌ Invalid      : 1 (33.3%)
+📬 Total emails : 3
+✅ Valid       : 2 (66.7%)
+❌ Invalid     : 1 (33.3%)
 ══════════════════════════════════════════════════
 
-💾 Hasil disimpan ke: results_20240101_120000.json
+💾 Results saved to: results_20240101_120000.json
 ```
 
 ---
 
-## ⚠️ Catatan Penting
+## ⚠️ Important Notes
 
-> **🔴 Legal Disclaimer:** Pastikan Anda memiliki izin untuk mengecek email. Jangan gunakan untuk spam atau aktivitas ilegal!
+> **🔴 Legal Disclaimer:** Make sure you have permission to check emails. Do not use for spam or illegal activities!
 
-| ⚡ Tips | Deskripsi |
+| ⚡ Tips | Description |
 |--------|-----------|
-| 🕐 Rate Limiting | Gunakan delay minimal **2 detik** untuk metode microsoft |
-| 🌐 Network | Memerlukan koneksi internet stabil (kecuali metode format) |
-| 🎯 Akurasi | Metode `microsoft` paling akurat untuk semua domain Microsoft |
+| 🕐 Rate Limiting | Use minimum **2 second** delay for microsoft method |
+| 🌐 Network | Requires stable internet connection (except format method) |
+| 🎯 Accuracy | `microsoft` method is most accurate for all Microsoft domains |
 
 ---
 
 ## 📜 License
 
 ```
-MIT License - Script ini disediakan "as is" untuk keperluan edukasi dan validasi yang legal.
+MIT License - This script is provided "as is" for educational and legal validation purposes.
 ```
 
 ---
@@ -265,6 +265,6 @@ MIT License - Script ini disediakan "as is" untuk keperluan edukasi dan validasi
 
 **Made with ❤️ by [nulsec](https://github.com/nulsec)**
 
-⭐ Star repo ini jika bermanfaat!
+⭐ Star this repo if it's helpful!
 
 </div>
