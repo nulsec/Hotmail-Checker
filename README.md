@@ -1,115 +1,197 @@
-# Hotmail Checker & Validator
+<div align="center">
 
-Script Python untuk mengecek dan memvalidasi email Hotmail/Outlook/Live secara langsung ke server Microsoft.
+# 📧 Hotmail Checker & Validator
 
-## Fitur
+![Python](https://img.shields.io/badge/Python-3.6+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue?style=for-the-badge)
+![Microsoft](https://img.shields.io/badge/Microsoft-API-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
 
+**🔍 Tool powerful untuk memvalidasi email Hotmail/Outlook/Live langsung ke server Microsoft**
+
+[Fitur](#-fitur) •
+[Instalasi](#-instalasi) •
+[Penggunaan](#-penggunaan) •
+[Dokumentasi](#-metode-pengecekan)
+
+---
+
+</div>
+
+## ⚡ Quick Start
+
+```bash
+# Clone repository
+git clone https://github.com/nulsec/Hotmail-Checker.git
+cd Hotmail-Checker
+
+# Cek single email
+python hotmail_checker.py email@hotmail.com
+
+# Bulk checking
+python hotmail_checker.py -f emails.txt
+```
+
+---
+
+## ✨ Fitur
+
+<table>
+<tr>
+<td>
+
+### 🎯 Core Features
 - ✅ Validasi format email
-- ✅ **Pengecekan terdaftar di Microsoft** menggunakan login.microsoftonline.com (REKOMENDASI)
-- ✅ Pengecekan langsung ke SMTP server Microsoft
-- ✅ Support untuk semua domain Microsoft: hotmail.com, outlook.com, live.com, msn.com, outlook.sg, dll
-- ✅ Single email checking
-- ✅ Bulk email checking dari file
-- ✅ Export hasil ke JSON
-- ✅ Delay antar pengecekan untuk menghindari rate limiting
-- ✅ Retry mechanism untuk handling timeout
-- ✅ Timeout yang dapat dikonfigurasi
+- ✅ **Pengecekan terdaftar di Microsoft** 
+- ✅ Pengecekan SMTP server
+- ✅ Single & Bulk checking
 
-## Instalasi
+</td>
+<td>
 
-Script ini menggunakan library standar Python saja, tidak memerlukan instalasi package tambahan.
+### 🌐 Supported Domains
+- 📬 hotmail.com
+- 📬 outlook.com  
+- 📬 live.com
+- 📬 msn.com
+- 📬 outlook.sg, dll
 
-**Persyaratan:**
-- Python 3.6 atau lebih baru
+</td>
+<td>
 
-## Penggunaan
+### 🛡️ Advanced
+- 🔄 Retry mechanism
+- ⏱️ Configurable timeout
+- 💾 Export ke JSON
+- 🚦 Rate limiting protection
 
-### Single Email Checking
+</td>
+</tr>
+</table>
+
+---
+
+## 📦 Instalasi
+
+> **Note:** Script ini menggunakan library standar Python saja!
+
+### Persyaratan
+| Requirement | Version |
+|------------|---------|
+| Python | 3.6+ |
+| OS | Windows / Linux / macOS |
+
+```bash
+# Clone repo
+git clone https://github.com/nulsec/Hotmail-Checker.git
+cd Hotmail-Checker
+
+# Siap digunakan! 🎉
+```
+
+---
+
+## 🚀 Penggunaan
+
+### 📝 Single Email Check
 
 ```bash
 python hotmail_checker.py email@hotmail.com
 ```
 
-### Bulk Checking dari File
+### 📋 Bulk Checking
 
-Buat file `emails.txt` dengan format satu email per baris:
+Buat file `emails.txt`:
 ```
 user1@hotmail.com
 user2@outlook.com
 user3@live.com
 ```
 
-Kemudian jalankan:
+Jalankan:
 ```bash
 python hotmail_checker.py -f emails.txt
 ```
 
-### Opsi Lainnya
+### 🎛️ Opsi Lanjutan
 
 ```bash
-# Metode Microsoft (REKOMENDASI - cek terdaftar di Microsoft)
+# 🏆 Metode Microsoft (REKOMENDASI)
 python hotmail_checker.py -f emails.txt -o results.json --method microsoft
 
-# Simpan hasil ke file tertentu
-python hotmail_checker.py -f emails.txt -o results.json
-
-# Set timeout dan delay
+# ⏱️ Custom timeout & delay
 python hotmail_checker.py -f emails.txt --timeout 15 --delay 2
 
-# Gunakan metode format (cepat, hanya validasi format & domain)
+# 🚀 Metode cepat (format only)
 python hotmail_checker.py email@hotmail.com --method format
 
-# Gunakan metode SMTP (lebih akurat tapi mungkin timeout)
+# 📡 Metode SMTP
 python hotmail_checker.py email@hotmail.com --method smtp
 
-# Jangan simpan hasil ke file
+# 🚫 Tanpa menyimpan hasil
 python hotmail_checker.py -f emails.txt --no-save
 ```
 
-## Opsi Command Line
+---
 
-- `email` - Alamat email yang akan dicek (untuk single check)
-- `-f, --file` - File berisi list email (satu per baris)
-- `-o, --output` - File output untuk menyimpan hasil (JSON)
-- `-m, --method` - Metode pengecekan: `microsoft` (cek terdaftar), `smtp` (SMTP verification), `vrfy` (VRFY command), `format` (format & domain only) (default: microsoft)
-- `-t, --timeout` - Timeout koneksi dalam detik (default: 10)
-- `-d, --delay` - Delay antar pengecekan dalam detik (default: 1.0)
-- `-r, --retry` - Jumlah retry jika timeout (default: 2)
-- `--no-save` - Jangan simpan hasil ke file
+## 📖 Command Line Options
 
-## Metode Pengecekan
+| Option | Deskripsi | Default |
+|--------|-----------|---------|
+| `email` | Email untuk single check | - |
+| `-f, --file` | File list email | - |
+| `-o, --output` | Output file (JSON) | Auto-generated |
+| `-m, --method` | Metode: `microsoft`, `smtp`, `vrfy`, `format` | `microsoft` |
+| `-t, --timeout` | Timeout (detik) | `10` |
+| `-d, --delay` | Delay antar cek (detik) | `1.0` |
+| `-r, --retry` | Jumlah retry | `2` |
+| `--no-save` | Tidak menyimpan hasil | `False` |
 
-### 1. Microsoft (Default - REKOMENDASI)
-Mengecek apakah email terdaftar di Microsoft menggunakan API login.microsoftonline.com. Metode ini paling akurat dan dapat mendeteksi semua domain Microsoft termasuk outlook.sg, outlook.co.id, dll.
+---
+
+## 🔬 Metode Pengecekan
+
+### 1️⃣ Microsoft (Default - ⭐ REKOMENDASI)
+
+> Menggunakan API `login.microsoftonline.com` - **Paling Akurat!**
 
 ```bash
 python hotmail_checker.py email@hotmail.com --method microsoft
 ```
 
-### 2. Format
-Hanya validasi format email dan domain Microsoft. Sangat cepat, tidak perlu koneksi internet.
+| Kelebihan | Kekurangan |
+|-----------|------------|
+| ✅ Sangat akurat | ⚠️ Perlu delay 2 detik |
+| ✅ Semua domain Microsoft | ⚠️ Rate limiting |
+| ✅ Deteksi email terdaftar | |
+
+### 2️⃣ Format (Tercepat ⚡)
 
 ```bash
 python hotmail_checker.py email@hotmail.com --method format
 ```
 
-### 3. SMTP
-Pengecekan menggunakan SMTP server. Lebih akurat tapi mungkin timeout karena server membatasi akses.
+> Hanya validasi format & domain. **Tidak perlu internet!**
+
+### 3️⃣ SMTP
 
 ```bash
 python hotmail_checker.py email@hotmail.com --method smtp
 ```
 
-### 4. VRFY
-Menggunakan VRFY command (biasanya dinonaktifkan untuk keamanan).
+> Pengecekan via SMTP server. Akurat tapi mungkin timeout.
+
+### 4️⃣ VRFY
 
 ```bash
 python hotmail_checker.py email@hotmail.com --method vrfy
 ```
 
-## Format Output
+> Menggunakan VRFY command (biasanya dinonaktifkan).
 
-Hasil pengecekan disimpan dalam format JSON:
+---
+
+## 📊 Format Output
 
 ```json
 [
@@ -124,51 +206,65 @@ Hasil pengecekan disimpan dalam format JSON:
 ]
 ```
 
-## Catatan Penting
+---
 
-1. **Metode Microsoft**: Metode `microsoft` adalah yang paling direkomendasikan karena dapat mengecek apakah email benar-benar terdaftar di Microsoft dengan akurat. Gunakan delay minimal 2 detik untuk menghindari rate limiting.
+## 🖥️ Contoh Output
 
-2. **Rate Limiting**: Microsoft mungkin membatasi jumlah request. Gunakan delay yang cukup antar pengecekan (minimal 2 detik untuk metode microsoft).
-
-3. **Akurasi**: 
-   - Metode `microsoft`: Sangat akurat, dapat mendeteksi semua domain Microsoft
-   - Metode `smtp`: Akurat tapi mungkin timeout karena server membatasi akses
-   - Metode `format`: Hanya validasi format dan domain, tidak mengecek apakah email benar-benar terdaftar
-
-4. **Legal**: Pastikan Anda memiliki izin untuk mengecek email yang akan divalidasi. Jangan gunakan untuk spam atau aktivitas ilegal.
-
-5. **Network**: Script memerlukan koneksi internet yang stabil untuk menghubungi server Microsoft (kecuali metode `format`).
-
-## Contoh Output
-
+### Single Check
 ```
 Mengecek email: test@hotmail.com
 
-Email: test@hotmail.com
-Domain: hotmail.com
-Status: ✓ VALID
-Pesan: Email valid dan aktif
+📧 Email  : test@hotmail.com
+🌐 Domain : hotmail.com
+✅ Status : VALID
+💬 Pesan  : Email valid dan aktif
 ```
 
-Untuk bulk checking:
+### Bulk Check
 ```
-Memulai pengecekan 3 email...
+🚀 Memulai pengecekan 3 email...
 
-[1/3] Mengecek: user1@hotmail.com... ✓ VALID - Email valid dan aktif
-[2/3] Mengecek: user2@outlook.com... ✗ INVALID - Email tidak valid atau tidak ada
-[3/3] Mengecek: user3@live.com... ✓ VALID - Email valid dan aktif
+[1/3] Mengecek: user1@hotmail.com... ✅ VALID
+[2/3] Mengecek: user2@outlook.com... ❌ INVALID  
+[3/3] Mengecek: user3@live.com... ✅ VALID
 
-==================================================
-RINGKASAN HASIL
-==================================================
-Total email dicek: 3
-Valid: 2 (66.7%)
-Invalid: 1 (33.3%)
-==================================================
+══════════════════════════════════════════════════
+📊 RINGKASAN HASIL
+══════════════════════════════════════════════════
+📬 Total email  : 3
+✅ Valid        : 2 (66.7%)
+❌ Invalid      : 1 (33.3%)
+══════════════════════════════════════════════════
 
-Hasil disimpan ke: results_20240101_120000.json
+💾 Hasil disimpan ke: results_20240101_120000.json
 ```
 
-## License
+---
 
-Script ini disediakan "as is" untuk keperluan edukasi dan validasi yang legal.
+## ⚠️ Catatan Penting
+
+> **🔴 Legal Disclaimer:** Pastikan Anda memiliki izin untuk mengecek email. Jangan gunakan untuk spam atau aktivitas ilegal!
+
+| ⚡ Tips | Deskripsi |
+|--------|-----------|
+| 🕐 Rate Limiting | Gunakan delay minimal **2 detik** untuk metode microsoft |
+| 🌐 Network | Memerlukan koneksi internet stabil (kecuali metode format) |
+| 🎯 Akurasi | Metode `microsoft` paling akurat untuk semua domain Microsoft |
+
+---
+
+## 📜 License
+
+```
+MIT License - Script ini disediakan "as is" untuk keperluan edukasi dan validasi yang legal.
+```
+
+---
+
+<div align="center">
+
+**Made with ❤️ by [nulsec](https://github.com/nulsec)**
+
+⭐ Star repo ini jika bermanfaat!
+
+</div>
